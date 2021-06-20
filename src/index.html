@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>inkMusic | XPlayer Pro版</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="player/css/player.css"/>
+		<style type="text/css">
+			body{
+				background-color: aliceblue;
+				font-family: "microsoft yahei";
+			}
+		</style>
+	</head>
+	<body>
+		<div style="margin: 200px 0;text-align: center;">
+			<h1>inkMusic自适应悬浮播放器</h1>
+			<p>续XPlayer播放器 又续Pro版 命名inkMusic 仅css样式 无播放功能 仅用于学习</p>
+			<p>自适应 | 简洁 | 多皮肤</p>
+		</div>
+		<div id="xplayer"class=""><div class="bg"style="background-image: url(http://p3.music.126.net/fob5pHV3xzGlJ_-KEeLFLg==/109951165693966983.jpg?param=200y200);"></div><div class="switch-player"><img src="http://p3.music.126.net/fob5pHV3xzGlJ_-KEeLFLg==/109951165693966983.jpg?param=200y200"class="cover"alt="专辑封面"><i class="fv fa fa-music"></i><i class="fx fa fa-angle-down"style="display: none;"></i></div><div class="switch-color"><i class="fa fa-gear"></i></div><div class="set-color"><div id="set-color" onclick="setColor();" style="background: #FFFFFF;"></div><div id="set-color" onclick="setColor('blue');" style="background: #03A9F4;"></div><div id="set-color" onclick="setColor('darkblue');" style="background: #2196F3;"></div><div id="set-color" onclick="setColor('green');" style="background: #4caf50;"></div><div id="set-color" onclick="setColor('vague');" style="background: url(player/other/mh.png);"></div></div><div class="title"style="display: none;"><span class="song"><span title="Love Story(Taylor’s Version)">Love Story</span></span><span class="artist"><span title="Taylor Swift">Taylor Swift</span></span></div><div class="play-board"><img class="play-needle pause-needle"src="player/other/play_needle.png"/><img class="play-cover"src="player/other/play_disc.png"/><img class="cover"src="http://p3.music.126.net/fob5pHV3xzGlJ_-KEeLFLg==/109951165693966983.jpg?param=200y200"><div id="Lrc"><ul><li class="Lrc0">Love Story(Taylors Version) - Taylor Swift (泰勒·斯威夫特)</li><li class="Lrc2 current">Lyrics by：Taylor Swift</li><li class="Lrc3">Composed by：Taylor Swift</ul></div></div><div class="control"><div class="info"><div class="volumecontrol"><i class="volume fa fa-volume-up"></i><div class="volumeprogress"><div class="progressbg"><div class="progressbg1"></div><div class="ts"style="position: absolute;"></div></div></div></div><div class="download"><i class="fa fa-cloud-download"title="下载歌曲"></i></div><div class="pattern"><i class="random fa fa-retweet"title="专辑循环"></i></div><div class="switch-playlist"><i class="fa fa-list-ul"title="播放列表"></i></div></div><span class="time">00:23</span><span class="maxtime">03:23</span><div class="playprogress"><div class="progressbg"><div class="progressbg1"></div><div class="progressbg2"></div><div class="ts"></div></div></div><div class="tool"><i class="aprev fa fa-fast-backward"title="上一专辑"></i><i class="prev fa fa-backward"title="上一首"></i><div id="play"style="display: inline-block;"><i class="play fa fa-play"title="播放"></i></div><i class="next fa fa-forward"title="下一首"></i><i class="anext fa fa-fast-forward"title="下一专辑"></i></div></div><div id="Tips"></div></div>
+		
+		<script src="player/js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="player/js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="player/js/player.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+</html>

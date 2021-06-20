@@ -1,0 +1,797 @@
+#xplayer * {
+    box-sizing: content-box;
+}
+
+#xplayer {
+    letter-spacing: normal;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 99999999;
+    width: 3.5rem;
+    height: 3.5rem;
+    font: small 'Microsoft Yahei';
+    transition: all 0.5s ease 0s;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    cursor: url(/player/other/default.cur),pointer;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+/* 主题配置 */
+/* 默认主题 */
+#xplayer {
+    --theme: #000000;
+    --background: #FFFFFF;
+    --color: #000;
+    --vicecolor: rgb(0 0 0 / 50%);
+    --switchcolor: rgb(0 0 0);
+    --switchbg: 0;
+    --progressnot: rgb(230 230 230 / 50%);
+}
+/* 蓝色主题 */
+#xplayer.blue {
+    --theme: #03a9f4;
+    --background: #FFFFFF;
+    --color: #000;
+    --vicecolor: rgb(0 0 0 / 50%);
+    --switchcolor: rgb(0 0 0);
+    --switchbg: 0;
+    --progressnot: rgb(230 230 230 / 50%);
+}
+/* 深蓝主题 */
+#xplayer.darkblue {
+    --theme: #000000;
+    --background: #2196f3;
+    --color: #000;
+    --vicecolor: rgb(0 0 0 / 50%);
+    --switchcolor: rgb(255 255 255);
+    --switchbg: 0;
+    --progressnot: rgb(230 230 230 / 50%);
+}
+/* 绿色主题 */
+#xplayer.green {
+    --theme: #000000;
+    --background: #4caf50;
+    --color: #000;
+    --vicecolor: rgb(0 0 0 / 50%);
+    --switchcolor: rgb(255 255 255 / 63%);
+    --switchbg: 0;
+    --progressnot: rgb(230 230 230 / 50%);
+}
+/* 模糊主题 */
+#xplayer.vague {
+    --theme: rgb(197 197 197);
+    --background: #000000;
+    --color: #fff;
+    --vicecolor: rgb(255 255 255 / 50%);
+    --switchcolor: rgb(255 255 255 / 63%);
+	--switchbg: 0;
+    --progressnot: rgb(230 230 230 / 50%);
+}
+#xplayer .bg{
+	display: none;
+}
+#xplayer.show.vague .bg{
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: .8rem;
+	filter: blur(50px);
+	-webkit-filter: blur(30px);
+	-moz-filter: blur(50px);
+	-o-filter: blur(50px);
+	-ms-filter: blur(50px);
+	background-size: cover;
+	background-position: center;
+	clip-path: inset(2.8px);
+	z-index: -1;
+}
+
+#xplayer.show #set-color {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 90px;
+    box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+    margin: 0 10px;
+}
+/* 主题配置结束 */
+#xplayer .switch-player {
+	position: relative;
+	background-color: var(--background);
+	border-radius: 90%;
+	width: 3rem;
+	height: 3rem;
+	line-height: 60px;
+	text-align: center;
+	padding: 5px;
+	cursor: url(/player/other/link.cur),pointer;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+}
+
+#xplayer .switch-player .fv{
+	position: absolute;
+	font-size: 26px;
+	color: rgb(255 255 255 / 63%);
+	left: 1rem;
+	top: 1rem;
+}
+
+#xplayer .switch-player .fx{
+	position: absolute;
+	font-size: 18px;
+	color: var(--switchcolor);
+	display: none;
+	left: .5rem;
+	top: .4rem;
+}
+
+#xplayer .switch-player img{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 90%;
+	text-align: center;
+}
+
+#xplayer .switch-color {
+	display: none;
+}
+
+#xplayer .set-color {
+	display: none;
+}
+
+@keyframes big {
+	from {
+	  width: 3.5rem;
+	  height: 3.5rem;
+	  background-color: var(--background);
+	  box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+	} to {
+	  width: 19rem;
+	  height: 500px;
+	  background-color: var(--background);
+	  box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+	}
+}
+
+#xplayer.show{
+	width: 19rem;
+	height: 500px;
+	background-color: var(--background);
+	box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+	border-radius: .8rem;
+	animation-name: big;
+	animation-duration: .5s;
+}
+
+#xplayer.show .switch-player {
+	position: relative;
+	border-radius: 1rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	background: var(--switchbg);
+	line-height: 1.2rem;
+	text-align: center;
+	cursor: url(/player/other/link.cur),pointer;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+	left: .2rem;
+	top: .2rem;
+}
+
+#xplayer.show .switch-color {
+	display: block !important;
+	position: absolute;
+	border-radius: 1rem;
+	width: 1.85rem;
+	height: 1.85rem;
+	background: var(--switchbg);
+	line-height: 1.85rem;
+	text-align: center;
+	cursor: url(/player/other/link.cur),pointer;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+	right: .2rem;
+	top: .2rem;
+}
+
+#xplayer.show .set-color {
+	position: absolute;
+	border-radius: 90PX;
+	width: 80%;
+	height: 3rem;
+	background: var(--background);
+	line-height: 3.9rem;
+	text-align: center;
+	cursor: url(/player/other/link.cur),pointer;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+	left: 50%;
+	top: 1.7rem;
+	margin: 0px -40%;
+	z-index: 99;
+	box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+	color: var(--theme);
+}
+
+#xplayer.show .set-color span{
+	font-size: 18px;
+	font-weight: 500;
+	display: block;
+	height: 20px;
+}
+
+#xplayer.show .switch-color .fa {
+	position: absolute;
+	font-size: 18px;
+	color: var(--switchcolor);
+	right: .4rem;
+	top: .4rem;
+}
+
+#xplayer.show .switch-player .fx {
+    display: block !important;
+}
+
+#xplayer.show .switch-player .fv {
+    display:none;
+}
+
+#xplayer.show .switch-player img {
+    display:none;
+}
+
+#xplayer.show .title {
+    display: block !important;
+    text-align: center;
+    width: calc(100% - 120px);
+    margin: 0 auto;
+    z-index: 9;
+}
+
+#xplayer.show .title span{
+    display: block;
+}
+
+#xplayer.show .title .song{
+    font-size: 16px;
+    color: var(--color);
+}
+
+#xplayer.show .title .artist{
+    font-size: 12px;
+	color: var(--vicecolor);
+}
+
+#xplayer .play-board{
+	position: absolute;
+    display: none;
+	width: 100%;
+	height: 70%;
+}
+
+#xplayer.show .play-board{
+    display: block!important;
+}
+
+/* 音乐碟动画 
+animation: rotate-disk 20s infinite normal linear;
+*/
+@keyframes rotate-disk {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+/* 磁针动画 */
+@keyframes rotate-needle-pause {
+    100% {
+        transform: rotateZ(-20deg);
+    }
+}
+@keyframes rotate-needle-resume {
+    0% {
+        transform: rotateZ(-20deg);
+    }
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+/* 暂停播放 */
+#xplayer.show .play-board .pause-needle {
+    animation: rotate-needle-pause 0.5s 1 normal linear;
+    animation-fill-mode: forwards;
+}
+/* 开始播放 */
+#xplayer.show .play-board .resume-needle {
+    animation: rotate-needle-resume 0.5s 1 normal linear;
+    animation-fill-mode: forwards;
+}
+#xplayer.show .play-board .resume-cover {
+    animation: rotate-disk 20s infinite normal linear;
+}
+#xplayer .switch-player .resume-cover {
+    animation: rotate-disk 20s infinite normal linear;
+}
+
+
+#xplayer.show .play-board .play-needle {
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    margin: 0px -12px;
+    z-index: 10;
+    width: 4rem;
+    transform-origin: 20px 20px;
+}
+
+#xplayer.show .play-board .play-cover {
+   position: absolute;
+   top: 4.5rem;
+   left: 4.7rem;
+   width: 150px;
+   height: 150px;
+   transform-origin: 20px 20px;
+}
+
+#xplayer.show .play-board .cover{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	border-radius: 90%;
+	left: 100px;
+	top: 6.05rem;
+}
+
+#Lrc {
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    transition: .5s;
+    position: relative;
+    -webkit-transform: translate3d(0,100%,0);
+    -moz-transform: translate3d(0,100%,0);
+    -ms-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+    z-index: 999999999999;
+    font-size: 13px;
+    width: 80%;
+    height: 65px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    top: 11rem;
+    color: var(--vicecolor);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    cursor: -webkit-grab;
+    -webkit-mask-image: linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(255,255,255,.6) 15%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 75%,rgba(255,255,255,.6) 85%,rgba(255,255,255,0) 100%);
+    z-index: -1;
+}
+
+#Lrc::-webkit-scrollbar {
+  display: none;
+}
+
+
+#Lrc li, #Lrc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#Lrc ul {
+	    
+}
+
+#Lrc li.current {
+    color: var(--color);
+    font-weight: 600;
+    opacity: .8;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+#xplayer .control{
+	display: none;
+}
+
+#xplayer.show .control{
+	display: block !important;
+	width: 100%;
+	height: 70px;
+	position: absolute;
+	bottom: .5rem;
+}
+
+#xplayer.show .control .playprogress {
+	cursor: url(/player/other/link.cur),pointer;
+	width: calc(100% - 120px);
+	margin: 0 auto;
+}
+
+#xplayer.show .control .playprogress .progressbg {
+    position: relative;
+    width: 100%;
+    top: 8px;
+    height: 3px;
+    background-color: rgb(234 234 234 / 50%);
+    border-radius: 25px;
+}
+
+#xplayer.show .control .playprogress .progressbg .progressbg1 {
+    position: absolute;
+    height: 3px;
+    left: 0;
+    top: 0;
+    width: 0;
+    background-color: var(--theme);
+    z-index: 2;
+    border-radius: 25px;
+}
+
+#xplayer.show .control .playprogress .progressbg .progressbg2 {
+    position: absolute;
+    height: 3px;
+    left: 0;
+    top: 0;
+    width: 0;
+    background-color: rgb(234 234 234 / 50%);
+    z-index: 1;
+    border-radius: 25px;
+}
+
+#xplayer.show .control .playprogress .progressbg .ts {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    background-color: var(--theme);
+    border-radius: 50%;
+    z-index: 2;
+    margin-left: 0px;
+}
+
+#xplayer.show  .control .time {
+    position: absolute;
+    color: var(--vicecolor);
+    font-size: 13px;
+    left: 15px;
+}
+
+#xplayer.show  .control .maxtime {
+    position: absolute;
+    color: var(--vicecolor);
+    font-size: 13px;
+    right: 15px;
+}
+
+#xplayer.show  .control .tool {
+    position: absolute;
+	top: 20px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	text-align: center;
+	color: var(--theme);
+}
+
+#xplayer.show  .control .tool  .fa {
+	margin: 0 15px;
+    cursor: url(/player/other/link.cur),pointer;
+}
+
+#xplayer.show  .control .tool  #play{
+	border: 1px solid var(--theme);
+	border-radius: 100%;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	padding: 3px;
+	font-size: 20px;
+}
+
+#xplayer.show  .control .tool  #play .fa {
+	margin: 0;
+	cursor: url(/player/other/link.cur),pointer;
+}
+
+#xplayer.show  .control .tool  #play .fa-play {
+	margin-left: 3px;
+}
+
+#xplayer.show .control .info {
+    position: absolute;
+    top: -3rem;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--theme);
+}
+
+#xplayer.show .control .info div {
+    display: inline-block;
+	margin: 0 22px;
+	cursor: url(/player/other/link.cur),pointer;
+}
+
+#xplayer.show .control .info .volumeprogress {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: none;
+    position: absolute;
+    width: 16px;
+    background: var(--background);
+    border-radius: 90px;
+    cursor: pointer;
+    top: -105px;
+    left: 29px;
+    height: 120px;
+    padding: 6px 0 10px 0;
+    -webkit-transition: .1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    transition: 1s;
+    -webkit-animation-name: fadeOut;
+}
+
+#xplayer.show .control .info .volumecontrol:hover .volumeprogress, #xplayer.show .control .info .volumeprogress:hover {
+    display: block;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 0s;
+}
+
+#xplayer.show .control .info .volumeprogress .progressbg {
+    cursor: url(/player/other/link.cur),pointer;
+    width: 6px;
+    height: 108px;
+    margin: 0 auto;
+    background-color: var(--progressnot);
+    position: relative;
+    border-radius: 90px;
+}
+
+#xplayer.show .control .info .volumeprogress .progressbg .progressbg1 {
+    width: 6px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: var(--theme);
+    position: absolute;
+    bottom: 0;
+    border-radius: 90px;
+    left: -0.001rem;
+}
+
+#xplayer.show .control .info .volumeprogress .ts {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: -24px;
+    background-color: var(--theme);
+    border-radius: 50%;
+    cursor: url(/player/other/link.cur),pointer;
+    z-index: 0;
+}
+
+#xplayer.show .control .info .volumecontrol:hover .volumeprogress, #xplayer.show .control .info .volumecontrol .volumeprogress:hover .progressbg .progressbg1 .ts {
+    display: block;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 0s;
+}
+
+#Tips {
+    position: fixed;
+    font-size: 1em;
+    text-shadow: none;
+    z-index: 999999999999;
+    top: 20px;
+    left: 20px;
+    border-radius: 90px;
+    background-color: var(--background);
+    padding: 10px;
+    color: var(--theme);
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    transition: .5s;
+    -webkit-transform: translate3d(-200%,0,0);
+    -moz-transform: translate3d(-200%,0,0);
+    -ms-transform: translate3d(-200%,0,0);
+    transform: translate3d(-200%,0,0);
+    font-family: pingfontweb,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Microsoft Jhenghei,sans-serif;
+    display: none;
+	box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+}
+
+#Tips.show {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.show {
+    display: block!important;
+}
+
+/* 手机端效果 */
+@media screen and (max-width: 680px){
+	@keyframes big {
+		from {
+		  width: 60px;
+		  height: 60px;
+		  background-color: var(--background);
+		  box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+		} to {
+		  width: 100%;
+		  height: 100%;
+		  left: 0;
+		  bottom: 0;
+		  background-color: var(--background);
+		  border-radius: 0;
+		  box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+		}
+	}
+	
+	#xplayer.show{
+		width: 100%;
+		height: 100%;
+		left: 0;
+		bottom: 0;
+		border-radius: 0;
+		background-color: var(--background);
+		box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+		animation-name: big;
+		animation-duration: .5s;
+	}
+	
+	#xplayer.show .play-board .play-needle {
+	    position: absolute;
+	    top: -.3rem;
+	    margin: 0px -12px;
+	    z-index: 10;
+	    width: 70px;
+	    transform-origin: 20px 20px;
+	}
+	
+	#xplayer.show .play-board .play-cover {
+	   position: absolute;
+	   top: 4rem;
+	   left: 50%;
+	   width: 200px;
+	   height: 200px;
+	   margin: 0% -100px;
+	   transform-origin: 20px 20px;
+	}
+	
+	#xplayer.show .play-board .cover{
+		position: absolute;
+		width: 135px;
+		height: 135px;
+		border-radius: 90%;
+		left: 50%;
+		top: 6rem;
+		margin: 0% -66px;
+	}
+	
+	#Lrc {
+	    -webkit-transition: .5s;
+	    -moz-transition: .5s;
+	    -ms-transition: .5s;
+	    transition: .5s;
+	    position: relative;
+	    -webkit-transform: translate3d(0,100%,0);
+	    -moz-transform: translate3d(0,100%,0);
+	    -ms-transform: translate3d(0,100%,0);
+	    transform: translate3d(0,100%,0);
+	    z-index: 999999999999;
+	    font-size: 13px;
+	    width: 80%;
+	    height: 80px;
+	    overflow: hidden;
+	    text-align: center;
+	    margin: 0 auto;
+	    top: 200px;
+	    color: var(--vicecolor);
+	    overflow-x: hidden;
+	    overflow-y: scroll;
+	}
+	
+	#xplayer.show .control{
+		display: block !important;
+		width: 100%;
+		height: 15%;
+		position: absolute;
+		bottom: .5rem;
+	}
+	
+	#xplayer.show .control .tool {
+	    position: absolute;
+	    top: 20px;
+	    width: 100%;
+	    height: 80px;
+	    line-height: 80px;
+	    font-size: 20px;
+	    text-align: center;
+	    color: var(--theme);
+	}
+	
+	#xplayer.show .control .info {
+	    position: absolute;
+	    top: -3rem;
+	    width: 100%;
+	    height: 50px;
+	    line-height: 50px;
+	    font-size: 20px;
+	    text-align: center;
+	    color: var(--theme);
+	}
+	
+	#xplayer.show .control .info .volumeprogress {
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    display: none;
+	    position: absolute;
+	    width: 16px;
+	    background: var(--background);
+	    border-radius: 90px;
+	    cursor: pointer;
+	    top: -105px;
+	    left: 50%;
+	    height: 120px;
+	    padding: 6px 0 10px 0;
+	    -webkit-transition: .1s;
+	    -moz-transition: 1s;
+	    -ms-transition: 1s;
+	    transition: 1s;
+	    -webkit-animation-name: fadeOut;
+	    margin: 0% -105px;
+	}
+	
+	#xplayer.show .set-color {
+		position: absolute;
+		border-radius: 90PX;
+		width: 70%;
+		height: 1.5rem;
+		background: rgb(0 0 0 / 50%);
+		line-height: 1rem;
+		text-align: center;
+		cursor: url(/player/other/link.cur),pointer;
+		-webkit-transform: rotate(0);
+		-moz-transform: rotate(0);
+		-ms-transform: rotate(0);
+		transform: rotate(0);
+		left: 50%;
+		top: 1.7rem;
+		margin: 0px -35%;
+		z-index: 99;
+		box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+		color: var(--theme);
+		padding: 20px 0;
+	}
+}
